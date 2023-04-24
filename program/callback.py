@@ -34,56 +34,6 @@ from config import (
 )
 
 
-@Client.on_callback_query(filters.regex("home_start"))
-@check_blacklist()
-async def start_set(_, query: CallbackQuery):
-    await query.answer("home start")
-    await query.edit_message_text(
-        f"""ههݪاެ حبيب [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) ❤️‍🔥\n
-اެناެ بَۅت بَمميࢪ࣪اެتَ متَعدَدةَ ݪتشغِيݪ اެݪاغاެنِي فَي اެݪمَجمَۅعاتَ 🥇.
-
--› MᥲᎥꪀƚᥲᎥꪀᥱძ ხy -› [S᥆ᥙrᥴᥱ Frᥱᥱძ᥆ꪔ](http://t.me/xl444)
-""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("🥇 اެضفني اެݪى مجمۅعتَك 🥇", url=f"https://t.me/{me_bot.username}?startgroup=true")
-                ],[
-                    InlineKeyboardButton("طࢪيقة اެݪتشغيݪ", callback_data="user_guide")
-                ],[
-                    InlineKeyboardButton(" اެݪاۅاެمࢪ", callback_data="command_list"),
-                    InlineKeyboardButton("🦎 اެݪمطَۅࢪ", url=f"https://t.me/{OWNER_USERNAME}")
-                ],
-            ]
-        ),
-        disable_web_page_preview=True,
-    )
-
-
-@Client.on_callback_query(filters.regex("user_guide"))
-@check_blacklist()
-async def guide_set(_, query: CallbackQuery):
-    await query.answer("user guide")
-    await query.edit_message_text(
-        f"""طريقة التشغيل ، تابع في الاسفل ↓
-
-1-› أولا ، أضفني الى مجموعتك
-2-› بعد ذالك قم برفعي كمشرف واعطائي صلاحيات مثل باقي البشر.
-3-› بعد ذالك اكتب `.تحديث` بيانات البوت
-3-› اضف سيدي ومولاي @{me_user.username} في مجموعتك او اكتب `.انضم` لدعوة المساعد
-4-› اذ لم تستطيع اضافة المساعد او واجهت مشاكل تحدث مع رئيس الوزراء  .
-
-""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("-› ࢪجَۅعَ", callback_data="home_start")
-                ],
-            ]
-        ),
-    )
-
-
 @Client.on_callback_query(filters.regex("command_list"))
 @check_blacklist()
 async def commands_set(_, query: CallbackQuery):
@@ -97,9 +47,7 @@ async def commands_set(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton("-› اوامر البوت", callback_data="user_command"),
-                ],[             
-                    InlineKeyboardButton("-› ࢪجَۅعَ", callback_data="home_start")
-                ],
+                ],[                              
             ]
         ),
     )
