@@ -46,12 +46,10 @@ async def commands_set(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("-› اوامر البوت", callback_data="user_command"),
-                ],[                              
-            ]
-        ),
-    )
-
+                    InlineKeyboardButton("-› اوامر البوت", callback_data="user_command"),                              
+                ]
+          ),
+      )
 
 @Client.on_callback_query(filters.regex("user_command"))
 @check_blacklist()
